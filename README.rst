@@ -156,3 +156,11 @@ See `supported databases`_ for details.
    :target: https://codecov.io/gh/albertodonato/query-exporter
 .. |Snap Status| image:: https://build.snapcraft.io/badge/albertodonato/query-exporter.svg
    :target: https://build.snapcraft.io/user/albertodonato/query-exporter
+
+Development environment
+-----------------------
+
+The easiest way to install the required dependencies is to use pipenv and run::
+
+    pipenv install -e .
+

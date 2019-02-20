@@ -1,0 +1,17 @@
+[[source]]
+name = "pypi"
+url = "https://pypi.org/simple"
+verify_ssl = true
+
+[dev-packages]
+pytest = "*"
+
+[packages]
+prometheus-aioexporter = "*"
+pyyaml = "*"
+query-exporter = {editable = true,path = "."}
+carto = "*"
+geographica-longitude = "==1.0.0a1"
+
+[requires]
+python_version = "3.7"

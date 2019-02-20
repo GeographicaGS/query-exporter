@@ -1,6 +1,6 @@
 import pytest
 
-from ..db import (
+from query_exporter.db import (
     DataBase,
     DataBaseError,
     InvalidResultCount,

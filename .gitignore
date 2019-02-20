@@ -9,3 +9,4 @@
 .pybuild
 .cache
 /snap/.snapcraft
+.idea

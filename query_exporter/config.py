@@ -17,6 +17,10 @@ from .db import (
     Query,
 )
 
+from .carto import (
+    DataBase as CartoDatabase
+)
+
 
 class ConfigError(Exception):
     """Configuration is invalid."""
@@ -50,7 +54,12 @@ def _get_databases(configs: Dict[str, Dict[str, Any]]) -> List[DataBase]:
     databases = []
     for name, config in configs.items():
         try:
-            databases.append(DataBase(name, config['dsn']))
+            if 'carto' in config.keys():
+                if 'dsn' in config.keys():
+                    raise KeyError(f'Database {name}: carto and dsn fields cannot be defined at the same time.')
+                databases.append(CartoDatabase(name, config['carto']))
+            else:
+                databases.append(DataBase(name, config['dsn']))
         except KeyError as e:
             _raise_missing_key(e, 'database', name)
     return databases
