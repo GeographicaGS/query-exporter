@@ -3,7 +3,7 @@ from operator import attrgetter
 import pytest
 import yaml
 
-from ..config import (
+from query_exporter.config import (
     ConfigError,
     load_config,
 )

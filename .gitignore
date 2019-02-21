@@ -9,3 +9,7 @@
 .pybuild
 .cache
 /snap/.snapcraft
+.idea
+dist
+venv
+htmlcov

@@ -4,8 +4,8 @@ from prometheus_aioexporter import MetricsRegistry
 import pytest
 import yaml
 
-from ..config import load_config
-from ..loop import QueryLoop
+from query_exporter.config import load_config
+from query_exporter.loop import QueryLoop
 from .fakes import FakeSQLAlchemy
 
 
