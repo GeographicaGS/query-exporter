@@ -5,7 +5,7 @@ from typing import Union
 from longitude.core.data_sources.carto import CartoDataSource
 from longitude.core.common.exceptions import LongitudeConfigError
 
-from db import Query
+from .db import Query
 
 
 class DataBase(namedtuple('DataBase', ['name', 'carto'])):
@@ -25,6 +25,10 @@ class DataBase(namedtuple('DataBase', ['name', 'carto'])):
     async def execute(self, query: Query):
         """Execute a query."""
         if self.data_source.is_ready:
-            return query.results(self.data_source.query(query_template=query.sql))
+            data = self.data_source.query(query_template=query.sql)
+
+            # query-exporter Query expects a list of tuples with the values of the fields
+            data = [tuple(r.values()) for r in data.rows]
+            return query.results(data)
         else:
             raise LongitudeConfigError('Carto data source cannot initialize with the provided config.')
