@@ -157,10 +157,48 @@ See `supported databases`_ for details.
 .. |Snap Status| image:: https://build.snapcraft.io/badge/albertodonato/query-exporter.svg
    :target: https://build.snapcraft.io/user/albertodonato/query-exporter
 
+Carto extension
+---------------
+
+You can define a carto connection instead of a SQL DSN. If you want to do so, use a `carto:` entry in your database.
+
+Example::
+
+    databases:
+      test_carto:
+        carto:
+          user: my_carto_user
+          api_key: my_carto_api_key
+
+    metrics:
+      observations_simple_count:
+        type: gauge
+        description: Simple count to check if this works...
+
+    queries:
+      query_count_simple_count:
+        interval: 120s
+        databases: [test_carto]
+        metrics: [observations_simple_count]
+        sql: SELECT count(*) from county_population;
+
+
+* You cannot use both `dsn` and `carto` entries in the same database as that makes no sense.
+* The available fields for the configuration object are the same as for the Longitude CartoDataSource objects.
+* As of today, such fields are (keep in mind that some might not make sense for monitoring):
+
+  * ``api_version``: ``v2`` by default
+  * ``uses_batch``: ``False`` by default
+  * ``on_premise_domain``: ``''`` by default. If provided, the Carto URL will use it. If not, the default user URL will.
+  * ``api_key``: ``''`` by default. Mandatory. Master api key recommended.
+  * ``user``: ``''`` by default. Mandatory. CARTO user (not email)
+  * ``cache``: Empty by default. Cache configuration. Useless in this context for now.
+
 Development environment
 -----------------------
 
-The easiest way to install the required dependencies is to use pipenv and run::
+The easiest way to install the required dependencies is to create a virtual environment and install the package:
 
+    python setup.py install
     pipenv install -e .
 
