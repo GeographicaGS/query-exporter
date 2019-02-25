@@ -1,0 +1,10 @@
+
+kind: pipeline
+name: run
+
+steps:
+  - name: install_and_build
+    image: python:3.6-slim
+    commands:
+      - python3 setup.py sdist bdist_wheel
+
