@@ -16,6 +16,6 @@ steps:
       password:
         from_secret: pypi_password
       # repository: https://test.pypi.org/legacy/
-    # when:
-    #   branch:
-    #     - master
+    when:
+      branch:
+        - master
