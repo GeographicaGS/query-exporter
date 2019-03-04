@@ -9,7 +9,7 @@ tests_require = ['pytest', 'pytest-asyncio', 'pytest-mock']
 
 config = {
     'name': 'query-exporter-carto',
-    'version': '1.5.0',
+    'version': '1.5.1',
     'license': 'GPLv3+',
     'description': 'Publish Prometheus metrics generated from SQL queries (also for CARTO SQL API).',
     'long_description': Path('README.rst').read_text(),

@@ -6,4 +6,4 @@ import pkg_resources
 
 __all__ = ['__version__']
 
-__version__ = LooseVersion(pkg_resources.require('query_exporter')[0].version)
+__version__ = LooseVersion(pkg_resources.require('query_exporter_carto')[0].version)
